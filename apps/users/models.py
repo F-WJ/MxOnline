@@ -42,6 +42,13 @@ class EmailVerifyRecord(models.Model):
         verbose_name = u"邮箱验证码"
         verbose_name_plural = verbose_name
 
+    # 一個Python“魔法”，返回任何對象的unicode“表示”。 這是Python和Django將在模型實例需要強制並顯示為純字符串時使用的。
+    # 最值得注意的是，當您在交互式控制台或管理員中顯示對象時，會發生這種情況。 你總是想定義這個方法;
+    # 默認是不是很有幫助。
+    # https://docs.djangoproject.com/en/1.9/topics/db/models/
+    def __unicode__(self):
+        return '{0}{1}'.format(self.code, self.email)
+
 
 class Banner(models.Model):
     title = models.CharField(max_length=100, verbose_name=u"标题")
