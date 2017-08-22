@@ -1,4 +1,4 @@
-
+# _*_ coding: utf-8 _*_
 """MxOnline URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -16,9 +16,17 @@ Including another URLconf
     3. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
 from django.conf.urls import url
-from django.contrib import admin
+# from django.contrib import admin
+# 专门处理静态文件
+from django.views.generic import TemplateView
 import xadmin
+
+# from users.views import user_login
+from users.views import LoginView
 
 urlpatterns = [
     url(r'^xadmin/', xadmin.site.urls),
+
+    url('^$', TemplateView.as_view(template_name="index.html"), name="index"),
+    url('^login/$', LoginView.as_view(), name="login")
 ]
