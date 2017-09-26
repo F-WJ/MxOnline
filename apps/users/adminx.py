@@ -13,6 +13,7 @@ class BaseSetting(object):
     enable_themes = True
     use_bootswatch = True
 
+
 class GlobalSettings(object):
     # 设置后台左上角信息
     site_title = "慕学后台管理系统"
